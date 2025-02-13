@@ -4,6 +4,7 @@ StockAnalyser is a comprehensive tool designed to assist investors with basic ca
 
 ## Features
 - Analysis of historical stock data
+- Calculation of primary metrics on the stock data
 - Real-time tracking of stock prices
 
 ## Installation
