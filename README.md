@@ -27,7 +27,29 @@ uvicorn api:app --reload
 - Visit the API documentation at [docs](http://localhost:8000/docs) to explore the request payload and response structure.
 - A Postman collection is provided for convenient import and quick usage.
 
-### Problem Statement
+### Directory Structure
+
+```
+src\
+│
+├── adapters\
+│   └── SimpleSuperStock.py - # Class to calculate PE ratio and dividend yield for a given stock
+│
+├── exceptions\
+│   └── ExceptionHandler.py - # Custom exception handler which provides more uniqueness and clustering of the issue
+│
+├── repository\
+│   └── TradingDb.py - # In memory DB to record trades and calculate metrics
+│
+├── tests\
+│   ├── test_SimpleSuperStock.py
+│   └── test_api.py
+│
+└── utilities\
+    └── Validation.py - # Validator to check if a given stock is valid or not
+```
+
+## Problem Statement
 
 The StockAnalyser tool aims to provide investors with essential metrics and indicators for informed decision-making. The tool should integrate seamlessly with existing features and provide the following functionalities:
 
