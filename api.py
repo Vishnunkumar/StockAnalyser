@@ -34,7 +34,7 @@ trading_db_instance.create_table(
     "trades",
     ["stock_symbol", "stock_price", "trade_time", "trade_quantity", "trade_indicator"]
     )
-
+trading_db_instance.create_table("all_share_index", ["stock_symbol", "weighted_stock_price"])
 
 @app.post("/stocks/get-dividend/")
 async def get_dividend(stock_item: StockItem):
@@ -116,15 +116,45 @@ async def get_volume_weighted_stock_price(trade_details: TradeRequest):
         validator.stock_validator(trade_details.stock_symbol)
         trading_metrics = TradingMetrics(trade_details.stock_symbol, trading_db_instance)
         volume_weighted_stock_price = trading_metrics.calculate_volume_weighted_stock_price()
+        logger.logger.info(f"Calculated volume weighted stock price for stock: {trade_details.stock_symbol}")
+
+        trading_db_instance.insert_record("all_share_index", {
+            "stock_symbol": trade_details.stock_symbol,
+            "weighted_stock_price": volume_weighted_stock_price
+        })
+
+        logger.logger.info(f"Recorded volume weighted stock price for stock: {trade_details.stock_symbol}")
         
         return StockResponse(
             status="success",
             value=round(volume_weighted_stock_price, 3),
-            message="Volume weighted stock price calculated successfully"
+            message="Volume weighted stock price calculated and stored successfully"
         )
 
     except Exception as exception:
         logger.logger.error(f"caught runtime exception while processing stock {trade_details.stock_symbol}" + 
+                            f"with the following error message {str(exception)}")
+        return StockResponse(
+            status="error",
+            value=0.0,
+            message=ClientException(exception).get_exception_message()
+        )
+    
+@app.post("/trade/get-all-share-index/")
+async def get_all_share_index():
+    
+    try:
+        trading_metrics = TradingMetrics(None, trading_db_instance)
+        geometric_mean = trading_metrics.calculate_all_share_index()
+        
+        return StockResponse(
+            status="success",
+            value=round(geometric_mean, 3),
+            message="Geometric mean calculated successfully"
+        )
+
+    except Exception as exception:
+        logger.logger.error(f"caught runtime exception while calculating geometric mean" + 
                             f"with the following error message {str(exception)}")
         return StockResponse(
             status="error",
