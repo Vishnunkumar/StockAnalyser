@@ -25,7 +25,11 @@ To see how can the API be used, please look into the docs: http://localhost:8000
 
 - We can integrate SimpleSuperStock directly as a code object to any existing feature, it helps getting the below information based on a
 given stock 
-    - to get dividend 
+    - to get dividend : example: call 
     - to get PE ratio
 - TradingDatastore acts as a in-memory DB where we can record and query data
 - TradingMetrics helps in calculation of metrics based on the stock and data available in the trading table.
+
+### API flow
+
+![plot](others/JPSample.drawio.png)

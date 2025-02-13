@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "97e793b8-ac88-4c2d-860d-efc333d05865",
+		"name": "JP Sample Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "record-trade",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Amz-Date",
+						"value": "20241202T045109Z",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "AWS4-HMAC-SHA256 Credential=AKIASEYBPJYCK4HM6WPW/20241202/ap-south-1/sqs/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=1be78a8e5713831f67be7e3ecb60ac109de428a8da4421427b7d04cbc7f61c84",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"stock_symbol\":\"JOE\",\r\n    \"stock_price\": 11,\r\n    \"trade_quantity\": 110,\r\n    \"trade_time\":\"2025-02-13 20:22:21\",\r\n    \"trade_indicator\":\"BUY\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/trade/record-trade/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"trade",
+						"record-trade",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all-share-index",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Amz-Date",
+						"value": "20241202T045109Z",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "AWS4-HMAC-SHA256 Credential=AKIASEYBPJYCK4HM6WPW/20241202/ap-south-1/sqs/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=1be78a8e5713831f67be7e3ecb60ac109de428a8da4421427b7d04cbc7f61c84",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/trade/get-all-share-index/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"trade",
+						"get-all-share-index",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pe-ratio",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Amz-Date",
+						"value": "20241202T045109Z",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "AWS4-HMAC-SHA256 Credential=AKIASEYBPJYCK4HM6WPW/20241202/ap-south-1/sqs/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=1be78a8e5713831f67be7e3ecb60ac109de428a8da4421427b7d04cbc7f61c84",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"stock_symbol\":\"JOE\",\r\n    \"stock_price\": 910\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/stocks/get-pe-ratio/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"stocks",
+						"get-pe-ratio",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-dividend",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Amz-Date",
+						"value": "20241202T045109Z",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "AWS4-HMAC-SHA256 Credential=AKIASEYBPJYCK4HM6WPW/20241202/ap-south-1/sqs/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=1be78a8e5713831f67be7e3ecb60ac109de428a8da4421427b7d04cbc7f61c84",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"stock_symbol\":\"JOE\",\r\n    \"stock_price\": 910\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/stocks/get-pe-ratio/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"stocks",
+						"get-pe-ratio",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-volume-weighted-stock-price",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Amz-Date",
+						"value": "20241202T045109Z",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "AWS4-HMAC-SHA256 Credential=AKIASEYBPJYCK4HM6WPW/20241202/ap-south-1/sqs/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=1be78a8e5713831f67be7e3ecb60ac109de428a8da4421427b7d04cbc7f61c84",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"stock_symbol\":\"GIN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/trade/get-volume-weighted-stock-price/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"trade",
+						"get-volume-weighted-stock-price",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

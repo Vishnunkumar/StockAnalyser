@@ -5,47 +5,47 @@ from api import app, StockItem, TradeRequest
 client = TestClient(app)
 
 def test_get_dividend_success():
-    response = client.post(
+    stock_response = client.post(
         "/stocks/get-dividend/",
         json={"stock_symbol": "TEA", "stock_price": 150.0}
     )
-    assert response.status_code == 200
-    assert response.json()["status"] == "success"
-    assert "value" in response.json()
-    assert "message" in response.json()
+    assert stock_response.status_code == 200
+    assert stock_response.json()["status"] == "success"
+    assert "value" in stock_response.json()
+    assert "message" in stock_response.json()
 
 def test_get_dividend_failure():
-    response = client.post(
+    stock_response = client.post(
         "/stocks/get-dividend/",
         json={"stock_symbol": "INVALID", "stock_price": 150.0}
     )
-    assert response.status_code == 200
-    assert response.json()["status"] == "error"
-    assert response.json()["value"] == 0.0
-    assert "message" in response.json()
+    assert stock_response.status_code == 200
+    assert stock_response.json()["status"] == "error"
+    assert stock_response.json()["value"] == 0.0
+    assert "message" in stock_response.json()
 
 def test_get_pe_ratio_success():
-    response = client.post(
+    stock_response = client.post(
         "/stocks/get-pe-ratio/",
         json={"stock_symbol": "GIN", "stock_price": 150.0}
     )
-    assert response.status_code == 200
-    assert response.json()["status"] == "success"
-    assert "value" in response.json()
-    assert "message" in response.json()
+    assert stock_response.status_code == 200
+    assert stock_response.json()["status"] == "success"
+    assert "value" in stock_response.json()
+    assert "message" in stock_response.json()
 
 def test_get_pe_ratio_failure():
-    response = client.post(
+    stock_response = client.post(
         "/stocks/get-pe-ratio/",
         json={"stock_symbol": "INVALID", "stock_price": 150.0}
     )
-    assert response.status_code == 200
-    assert response.json()["status"] == "error"
-    assert response.json()["value"] == 0.0
-    assert "message" in response.json()
+    assert stock_response.status_code == 200
+    assert stock_response.json()["status"] == "error"
+    assert stock_response.json()["value"] == 0.0
+    assert "message" in stock_response.json()
 
 def test_record_trade_success():
-    response = client.post(
+    stock_response = client.post(
         "/trade/record-trade/",
         json={
             "stock_symbol": "JOE",
@@ -55,13 +55,13 @@ def test_record_trade_success():
             "trade_indicator": "BUY"
         }
     )
-    assert response.status_code == 200
-    assert response.json()["status"] == "success"
-    assert response.json()["value"] == 0.0
-    assert response.json()["message"] == "Trade recorded successfully"
+    assert stock_response.status_code == 200
+    assert stock_response.json()["status"] == "success"
+    assert stock_response.json()["value"] == 0.0
+    assert stock_response.json()["message"] == "Trade recorded successfully"
 
 def test_record_trade_failure():
-    response = client.post(
+    stock_response = client.post(
         "/trade/record-trade/",
         json={
             "stock_symbol": 2,
@@ -71,28 +71,28 @@ def test_record_trade_failure():
             "trade_indicator": "BUY"
         }
     )
-    print(response.json())
-    assert response.status_code == 200
-    assert response.json()["status"] == "error"
-    assert response.json()["value"] == 0.0
-    assert "message" in response.json()
+    print(stock_response.json())
+    assert stock_response.status_code == 200
+    assert stock_response.json()["status"] == "error"
+    assert stock_response.json()["value"] == 0.0
+    assert "message" in stock_response.json()
 
 def test_get_volume_weighted_stock_price_success():
-    response = client.post(
+    stock_response = client.post(
         "/trade/get-volume-weighted-stock-price/",
         json={"stock_symbol": "TEA"}
     )
-    assert response.status_code == 200
-    assert response.json()["status"] == "success"
-    assert "value" in response.json()
-    assert "message" in response.json()
+    assert stock_response.status_code == 200
+    assert stock_response.json()["status"] == "success"
+    assert "value" in stock_response.json()
+    assert "message" in stock_response.json()
 
 def test_get_volume_weighted_stock_price_failure():
-    response = client.post(
+    stock_response = client.post(
         "/trade/get-volume-weighted-stock-price/",
         json={"stock_symbol": "INVALID"}
     )
-    assert response.status_code == 200
-    assert response.json()["status"] == "error"
-    assert response.json()["value"] == 0.0
-    assert "message" in response.json()
+    assert stock_response.status_code == 200
+    assert stock_response.json()["status"] == "error"
+    assert stock_response.json()["value"] == 0.0
+    assert "message" in stock_response.json()

@@ -72,3 +72,10 @@ class TradingMetrics:
         sum_of_quantities = sum([record["trade_quantity"] for record in required_trade_data])
 
         return sum_of_prices/sum_of_quantities if sum_of_quantities != 0 else 0.0
+
+    def calculate_all_share_index(self):
+        all_trade_data = self.trade_data.query_table("all_share_index")
+        product_of_prices = 1
+        for record in all_trade_data:
+            product_of_prices *= record["weighted_stock_price"]
+        return product_of_prices**(1/len(all_trade_data))
